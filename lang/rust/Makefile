@@ -21,7 +21,7 @@ HOOKS := .git/hooks/pre-commit
 # PRE-COMMIT HOOKS
 
 $(VENV): .requirements-precommit.txt
-	virtualenv -p python3 $(VENV)
+	python3 -m venv $(VENV)
 	$(VENV)/bin/pip install -r .requirements-precommit.txt
 
 .PHONY: env
@@ -34,8 +34,8 @@ clean-env:
 $(HOOKS): $(VENV) .pre-commit-config.yaml
 	$(VENV)/bin/pre-commit install -f --install-hooks
 	cargo fmt --help > /dev/null || rustup component add rustfmt
-	cargo clippy --help > /dev/null || rustup component add clippy
-	cargo readme --help > /dev/null || cargo install cargo-readme
+	cargo clippy --help || rustup component add clippy
+	cargo rdme --help > /dev/null || cargo install cargo-rdme
 
 .PHONY: install-hooks
 install-hooks: $(HOOKS)
