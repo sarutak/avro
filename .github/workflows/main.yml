@@ -1,0 +1,33 @@
+name: Rust Clippy Check
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  RUSTFLAGS: -Dwarnings
+
+defaults:
+  run:
+    working-directory: lang/rust
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  clippy_check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust:
+          - 'stable'
+          - '1.65.0'  # MSRV
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          toolchain: stable
+          components: clippy
+      - run: cargo +${{ matrix.rust}} clippy --all-features --all-targets -- -Dclippy::all -Dunused_imports
