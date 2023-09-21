@@ -27,7 +27,7 @@
 <!-- cargo-rdme start -->
 
 A library for working with [Apache Avro](https://avro.apache.org/) in Rust.
-
+Hello
 Please check our [documentation](https://docs.rs/apache-avro) for examples, tutorials and API reference.
 
 **[Apache Avro](https://avro.apache.org/)** is a data serialization system which provides rich
