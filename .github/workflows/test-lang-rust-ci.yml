@@ -129,7 +129,7 @@ jobs:
           toolchain: stable
 
       - name: Cache Cargo
-        uses: actions/cache@v3
+        uses: actions/cache/cache@v3
         with:
           # these represent dependencies downloaded by cargo
           # and thus do not depend on the OS, arch nor rust version.
@@ -214,7 +214,7 @@ jobs:
           targets: wasm32-unknown-unknown
 
       - name: Cache Cargo
-        uses: actions/cache@v3
+        uses: actions/cache/restore@v3
         with:
           # these represent dependencies downloaded by cargo
           # and thus do not depend on the OS, arch nor rust version.
