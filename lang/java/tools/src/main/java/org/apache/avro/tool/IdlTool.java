@@ -58,7 +58,7 @@ public class IdlTool implements Tool {
     Schema m = null;
     Protocol p;
     if (useJavaCC) {
-      //noinspection deprecation
+      // noinspection deprecation
       try (Idl parser = new Idl(inputFile)) {
         p = parser.CompilationUnit();
         for (String warning : parser.getWarningsAfterParsing()) {
