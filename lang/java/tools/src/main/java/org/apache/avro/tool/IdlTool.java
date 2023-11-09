@@ -70,7 +70,7 @@ public class IdlTool implements Tool {
       for (String warning : idlFile.getWarnings()) {
         err.println("Warning: " + warning);
       }
-      idlFile = parser.resolve(idlFile);
+      //idlFile = parser.resolve(idlFile);
       p = idlFile.getProtocol();
       m = idlFile.getMainSchema();
     }
