@@ -16,6 +16,7 @@
 # limitations under the License.
 
 set -e
+set -x
 
 usage() {
   echo "Usage: $0 {lint|test|dist|clean}"
